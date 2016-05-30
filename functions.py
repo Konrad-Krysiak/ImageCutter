@@ -3,7 +3,7 @@ from PIL import Image
 import os, sys
 
 
-def Cut_Image():
+def cut_image():
     print '''
     =====================
     CUT IMAGE
@@ -13,8 +13,8 @@ def Cut_Image():
     3. Close
     =====================
     '''
-    wybor = raw_input(">> ")
-    if wybor == "1":
+    choice = raw_input(">> ")
+    if choice == "1":
         directory = raw_input('Directory to file: ')
         width = input('Width: ')
         height = input('Height: ')
@@ -31,7 +31,7 @@ def Cut_Image():
         except:
             raw_input('Error..')
 
-    elif wybor == "2":
+    elif choice == "2":
         f_directory = raw_input('Directory to folder: ')
         width = input('Width: ')
         height = input('Height: ')
@@ -52,11 +52,11 @@ def Cut_Image():
                 im.save('resized_images/'+item)
                 print "- " + item + " : " + "DONE"
         raw_input("Saved in resized_images.")
-    elif wybor == "3":
+    elif choice == "3":
         os.system('clear')
         sys.exit()
         
-def Change_Format():
+def change_format():
     print '''
     =====================
     Change Format
@@ -66,8 +66,8 @@ def Change_Format():
     3. Close
     =====================
     '''
-    wybor = raw_input(">> ")
-    if wybor == "1":
+    choice = raw_input(">> ")
+    if choice == "1":
         directory = raw_input('Directory to file: ')
         ext = raw_input('Save as: ')
         im = Image.open(directory)
@@ -81,7 +81,7 @@ def Change_Format():
         except:
             raw_input('Error..')
 
-    elif wybor == "2":
+    elif choice == "2":
         f_directory = raw_input('Directory to folder: ')
         ext = raw_input('Format: ')
         try:
@@ -104,7 +104,7 @@ def Change_Format():
                     raw_input('Saved in formated_images.')
             except:
                 raw_input('Error..')
-    elif wybor == "3":
+    elif choice == "3":
         os.system('cls')
         sys.exit()
     else:
@@ -112,7 +112,7 @@ def Change_Format():
         sys.exit()
         os.system('cls')
 
-def Make_thumbnail():
+def make_thumbnail():
     print '''
     =====================
     Make thumbnail
@@ -122,8 +122,8 @@ def Make_thumbnail():
     3. Close
     =====================
     '''
-    wybor = raw_input(">> ")
-    if wybor == "1":
+    choice = raw_input(">> ")
+    if choice == "1":
         directory = raw_input('Directory to file: ')
         name = raw_input('Save as: ')
         im = Image.open(directory)
@@ -137,7 +137,7 @@ def Make_thumbnail():
             raw_input('Saved in min_images.')
         except:
             raw_input('Error..')
-    elif wybor == "2":
+    elif choice == "2":
         f_directory = raw_input('Directory to folder: ')
         try:
             fieldlist = os.listdir(f_directory)
@@ -155,6 +155,6 @@ def Make_thumbnail():
                 im.save('min_images/'+item)
                 print "- " + item + " " + str(im.size) + " : " + "DONE"
         raw_input('Saved in min_images.')
-    elif wybor == "3":
+    elif choice == "3":
         os.system('cls')
         sys.exit()

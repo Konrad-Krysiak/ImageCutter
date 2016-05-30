@@ -2,7 +2,7 @@ import os, sys
 from PIL import Image
 import functions as Fn
 
-def Menu():
+def menu():
     os.system('cls')
     print '''
     =====================
@@ -36,5 +36,5 @@ while choice != "4":
         os.system('cls')
 
 
-Menu()
+menu()
 
