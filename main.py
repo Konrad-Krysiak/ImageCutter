@@ -20,16 +20,16 @@ def menu():
 # Choose function
 choice = ""
 while choice != "4":
-    choice = Menu()
+    choice = menu()
     if choice == "1":
         os.system('cls')
-        Fn.Cut_Image()
+        Fn.cut_image()
     elif choice == "2":
         os.system('cls')
-        Fn.Change_Format()
+        Fn.change_format()
     elif choice == "3":
         os.system('cls')
-        Fn.Make_thumbnail()
+        Fn.make_thumbnail()
     elif choice == "4":
         raw_input('Press anything to close..')
         sys.exit()
