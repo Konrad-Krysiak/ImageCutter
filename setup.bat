@@ -1,19 +1,15 @@
 @echo off
-cd /d %~dp0\resources
-.\python-2.7.11.msi
-echo -installing python
+cd /d %~dp0
+echo - installing python
+.\resources\python-2.7.11.msi
+echo - done
 
-set PYTHONPATH=%PYTHONPATH%;C:\Python27
-echo -adding PYTHON environment variable to PYTHONPATH
-setx path "%path%;C:\Python27;"
-echo -adding PYTHON environment variable to PATH
 
-python get-pip.py 
-echo -installing pip
-setx path "%path%;C:\Python27\Scripts;"
-echo -adding PIP environment variable to PATH
+timeout 600
 
-pip install Pillow
-echo -installing pillow
+echo - adding PYTHON and PIP environment variable to PATH
+setx PATH "%PATH%;C:\Python27;C:\Python27\Scripts;"
+echo - done
 
-pause
+
+timeout 2
