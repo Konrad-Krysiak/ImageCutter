@@ -1,3 +1,4 @@
 @echo off
-python C:\Users\Senpai\Desktop\School\ImgCutter\main.py %*
+cd /d %~dp0
+python main.py %*
 pause
