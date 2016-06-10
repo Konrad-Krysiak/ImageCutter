@@ -26,13 +26,13 @@ class Main:
             choice = self.menu()
             if choice == "1":
                 os.system('cls')
-                image_resizer.cut_image()
+                image_resizer.choose_cut_image()
             elif choice == "2":
                 os.system('cls')
-                image_resizer.change_format()
+                image_resizer.choose_change_format()
             elif choice == "3":
                 os.system('cls')
-                image_resizer.make_thumbnail()
+                image_resizer.choose_make_thumbnail()
             elif choice == "4":
                 raw_input('Press anything to close..')
                 sys.exit()

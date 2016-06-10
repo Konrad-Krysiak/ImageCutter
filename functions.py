@@ -3,7 +3,7 @@ from PIL import Image
 import os, sys
 
 class ImageResizer:
-    def cut_image(self):
+    def choose_cut_image(self):
         print '''
         =====================
         CUT IMAGE
@@ -14,6 +14,9 @@ class ImageResizer:
         =====================
         '''
         choice = raw_input(">> ")
+        self.cut_image(choice)
+
+    def cut_image(self, choice):
         if choice == "1":
             directory = raw_input('Directory to file: ')
             width = input('Width: ')
@@ -54,9 +57,9 @@ class ImageResizer:
             raw_input("Saved in resized_images.")
         elif choice == "3":
             os.system('clear')
-            sys.exit()
-            
-    def change_format(self):
+            sys.exit() 
+
+    def choose_change_format(self):
         print '''
         =====================
         Change Format
@@ -67,6 +70,9 @@ class ImageResizer:
         =====================
         '''
         choice = raw_input(">> ")
+        self.change_format(choice)
+        
+    def change_format(self, choice):
         if choice == "1":
             directory = raw_input('Directory to file: ')
             ext = raw_input('Save as: ')
@@ -112,7 +118,7 @@ class ImageResizer:
             sys.exit()
             os.system('cls')
 
-    def make_thumbnail(self):
+    def choose_make_thumbnail(self):
         print '''
         =====================
         Make thumbnail
@@ -123,18 +129,21 @@ class ImageResizer:
         =====================
         '''
         choice = raw_input(">> ")
+        self.make_thumbnail(choice)
+
+    def make_thumbnail(self, choice):
         if choice == "1":
             directory = raw_input('Directory to file: ')
             name = raw_input('Save as: ')
             im = Image.open(directory)
             im.thumbnail((128, 128))
-            if not os.path.exists('min_images'):
-                os.mkdir('min_images')
+            if not os.path.exists('thumbnails'):
+                os.mkdir('thumbnails')
             try:
-                im.save('min_images/'+name)
+                im.save('thumbnails/'+name)
                 print "Name: " + name
                 print "Size: " + str(im.size)
-                raw_input('Saved in min_images.')
+                raw_input('Saved in thumbnails.')
             except:
                 raw_input('Error..')
         elif choice == "2":
@@ -145,16 +154,16 @@ class ImageResizer:
                 raw_input('Folder does not exist.')
                 sys.exit()
             extensions = ['JPG', 'PNG', 'JPEG', 'GIF']
-            if not os.path.exists('min_images'):
-                os.mkdir('min_images')
+            if not os.path.exists('thumbnails'):
+                os.mkdir('thumbnails')
             for item in fieldlist:
                 directory = f_directory+ "\\" + item
                 im = Image.open(directory)
                 if im.format in extensions:
                     im.thumbnail((128, 128))
-                    im.save('min_images/'+item)
+                    im.save('thumbnails/'+item)
                     print "- " + item + " " + str(im.size) + " : " + "DONE"
-            raw_input('Saved in min_images.')
+            raw_input('Saved in thumbnails.')
         elif choice == "3":
             os.system('cls')
             sys.exit()
