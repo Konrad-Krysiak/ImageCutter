@@ -17,25 +17,27 @@ class Main:
         '''
         choice = raw_input('Choose and press Enter: ')
         return choice
-
+    
+    def choose_function(self):
+        image_resizer = ImageResizer()
+        # Choose function
+        choice = ""
+        while choice != "4":
+            choice = self.menu()
+            if choice == "1":
+                os.system('cls')
+                image_resizer.cut_image()
+            elif choice == "2":
+                os.system('cls')
+                image_resizer.change_format()
+            elif choice == "3":
+                os.system('cls')
+                image_resizer.make_thumbnail()
+            elif choice == "4":
+                raw_input('Press anything to close..')
+                sys.exit()
+                os.system('cls')
 m = Main()
-image_resizer = ImageResizer()
-# Choose function
-choice = ""
-while choice != "4":
-    choice = m.menu()
-    if choice == "1":
-        os.system('cls')
-        image_resizer.cut_image()
-    elif choice == "2":
-        os.system('cls')
-        image_resizer.change_format()
-    elif choice == "3":
-        os.system('cls')
-        image_resizer.make_thumbnail()
-    elif choice == "4":
-        raw_input('Press anything to close..')
-        sys.exit()
-        os.system('cls')
-m.menu()
+m.choose_function()
+    
 
