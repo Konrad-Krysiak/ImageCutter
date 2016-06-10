@@ -19,20 +19,20 @@ class Main:
         return choice
 
 m = Main()
-IR = ImageResizer()
+image_resizer = ImageResizer()
 # Choose function
 choice = ""
 while choice != "4":
     choice = m.menu()
     if choice == "1":
         os.system('cls')
-        IR.cut_image()
+        image_resizer.cut_image()
     elif choice == "2":
         os.system('cls')
-        IR.change_format()
+        image_resizer.change_format()
     elif choice == "3":
         os.system('cls')
-        IR.make_thumbnail()
+        image_resizer.make_thumbnail()
     elif choice == "4":
         raw_input('Press anything to close..')
         sys.exit()
