@@ -4,8 +4,8 @@ import os, sys
 
 class ImageResizer:
 
-    def cut_image(self, directory, width, height, name):
-        im = Image.open(directory)
+    def cut_image(self, image_path, width, height, name):
+        im = Image.open(image_path)
         im = im.resize((width, height))
         if not os.path.exists('resized_images'):
             os.mkdir('resized_images')
@@ -17,9 +17,9 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def cut_image_folder(self, f_directory, width, height):
+    def cut_image_folder(self, images_folder_path, width, height):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
@@ -28,7 +28,7 @@ class ImageResizer:
             os.mkdir('resized_images')
         print "Size: " + str(width) + " x " + str(height)
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             if im.format in extensions:
                 im = im.resize((width, height))
@@ -36,8 +36,8 @@ class ImageResizer:
                 print "- " + item + " : " + "DONE"
         raw_input("Saved in resized_images.")    
     
-    def change_format(self, directory, ext):
-        im = Image.open(directory)
+    def change_format(self, image_path, ext):
+        im = Image.open(image_path)
         if not os.path.exists('formated_images'):
             os.mkdir('formated_images')
         try:
@@ -48,9 +48,9 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def change_format_folder(self, f_directory, ext):
+    def change_format_folder(self, images_folder_path, ext):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
@@ -58,7 +58,7 @@ class ImageResizer:
             os.mkdir('formated_images')
         fieldlist_range = len(fieldlist)
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             try:
                 im.save('formated_images/'+os.path.splitext(item)[0]+'.'+ext)
@@ -69,8 +69,8 @@ class ImageResizer:
             except:
                 raw_input('Error..')        
 
-    def make_thumbnail(self, directory, name):
-        im = Image.open(directory)
+    def make_thumbnail(self, image_path, name):
+        im = Image.open(image_path)
         im.thumbnail((128, 128))
         if not os.path.exists('thumbnails'):
             os.mkdir('thumbnails')
@@ -82,9 +82,9 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def make_thumbnail_folder(self, f_directory):
+    def make_thumbnail_folder(self, images_folder_path):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
@@ -92,7 +92,7 @@ class ImageResizer:
         if not os.path.exists('thumbnails'):
             os.mkdir('thumbnails')
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             if im.format in extensions:
                 im.thumbnail((128, 128))

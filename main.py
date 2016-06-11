@@ -4,7 +4,7 @@ from functions import ImageResizer
 
 class Main:
     def menu(self):
-        os.system('cls')
+        os.system('cls')         
         print '''
         =====================
         Image Editor
@@ -37,17 +37,17 @@ class Main:
                 method_choice = raw_input(">> ")
                 
                 if method_choice == "1":
-                    directory = raw_input('Directory to file: ')
+                    image_path = raw_input('Directory to file: ')
                     width = input('Width: ')
                     height = input('Height: ')
                     name = raw_input('Save as: ')
-                    image_resizer.cut_image(directory, width, height, name)
+                    image_resizer.cut_image(image_path, width, height, name)
 
                 elif method_choice == "2":
-                    f_directory = raw_input('Directory to folder: ')
+                    images_folder_path = raw_input('Directory to folder: ')
                     width = input('Width: ')
                     height = input('Height: ')
-                    image_resizer.cut_image_folder(f_directory, width, height)
+                    image_resizer.cut_image_folder(images_folder_path, width, height)
                     
                 elif method_choice == "3":
                     os.system('clear')
@@ -67,14 +67,14 @@ class Main:
                 method_choice = raw_input(">> ")
                 
                 if method_choice == "1":
-                    directory = raw_input('Directory to file: ')
+                    image_path = raw_input('Directory to file: ')
                     ext = raw_input('Save as: ')
-                    image_resizer.change_format(directory, ext)
+                    image_resizer.change_format(image_path, ext)
 
                 elif method_choice == "2":
-                    f_directory = raw_input('Directory to folder: ')
+                    images_folder_path = raw_input('Directory to folder: ')
                     ext = raw_input('Format: ')
-                    image_resizer.change_format_folder(f_directory, ext)
+                    image_resizer.change_format_folder(images_folder_path, ext)
                     
                 elif method_choice == "3":
                     os.system('clear')
@@ -94,13 +94,13 @@ class Main:
                 method_choice = raw_input(">> ")
                 
                 if method_choice == "1":
-                    directory = raw_input('Directory to file: ')
+                    image_path = raw_input('Directory to file: ')
                     name = raw_input('Save as: ')
-                    image_resizer.make_thumbnail(directory, name)
+                    image_resizer.make_thumbnail(image_path, name)
 
                 elif method_choice == "2":
-                    f_directory = raw_input('Directory to folder: ')
-                    image_resizer.make_thumbnail_folder(f_directory)
+                    images_folder_path = raw_input('Directory to folder: ')
+                    image_resizer.make_thumbnail_folder(images_folder_path)
                     
                 elif method_choice == "3":
                     os.system('clear')
