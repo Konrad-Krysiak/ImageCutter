@@ -17,7 +17,7 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def cut_image_folder(self, images_folder_path, width, height):
+    def cut_images_in_folder(self, images_folder_path, width, height):
         try:
             fieldlist = os.listdir(images_folder_path)
         except OSError:
@@ -48,7 +48,7 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def change_format_folder(self, images_folder_path, ext):
+    def change_format_in_folder(self, images_folder_path, ext):
         try:
             fieldlist = os.listdir(images_folder_path)
         except OSError:
@@ -82,7 +82,7 @@ class ImageResizer:
         except:
             raw_input('Error..')
             
-    def make_thumbnail_folder(self, images_folder_path):
+    def make_thumbnail_in_folder(self, images_folder_path):
         try:
             fieldlist = os.listdir(images_folder_path)
         except OSError:

@@ -47,7 +47,7 @@ class Main:
                     images_folder_path = raw_input('Directory to folder: ')
                     width = input('Width: ')
                     height = input('Height: ')
-                    image_resizer.cut_image_folder(images_folder_path, width, height)
+                    image_resizer.cut_images_in_folder(images_folder_path, width, height)
                     
                 elif method_choice == "3":
                     os.system('clear')
@@ -74,7 +74,7 @@ class Main:
                 elif method_choice == "2":
                     images_folder_path = raw_input('Directory to folder: ')
                     ext = raw_input('Format: ')
-                    image_resizer.change_format_folder(images_folder_path, ext)
+                    image_resizer.change_format_in_folder(images_folder_path, ext)
                     
                 elif method_choice == "3":
                     os.system('clear')
@@ -100,7 +100,7 @@ class Main:
 
                 elif method_choice == "2":
                     images_folder_path = raw_input('Directory to folder: ')
-                    image_resizer.make_thumbnail_folder(images_folder_path)
+                    image_resizer.make_thumbnail_in_folder(images_folder_path)
                     
                 elif method_choice == "3":
                     os.system('clear')
