@@ -20,19 +20,92 @@ class Main:
     
     def choose_function(self):
         image_resizer = ImageResizer()
-        # Choose function
         choice = ""
         while choice != "4":
             choice = self.menu()
             if choice == "1":
                 os.system('cls')
-                image_resizer.choose_cut_image()
+                print '''
+        =====================
+        CUT IMAGE
+        =====================
+        1. File
+        2. Folder
+        3. Close
+        =====================
+                '''
+                method_choice = raw_input(">> ")
+                
+                if method_choice == "1":
+                    directory = raw_input('Directory to file: ')
+                    width = input('Width: ')
+                    height = input('Height: ')
+                    name = raw_input('Save as: ')
+                    image_resizer.cut_image(directory, width, height, name)
+
+                elif method_choice == "2":
+                    f_directory = raw_input('Directory to folder: ')
+                    width = input('Width: ')
+                    height = input('Height: ')
+                    image_resizer.cut_image_folder(f_directory, width, height)
+                    
+                elif method_choice == "3":
+                    os.system('clear')
+                    sys.exit()
+                
             elif choice == "2":
                 os.system('cls')
-                image_resizer.choose_change_format()
+                print '''
+        =====================
+        CHANGE FORMAT
+        =====================
+        1. File
+        2. Folder
+        3. Close
+        =====================
+                '''
+                method_choice = raw_input(">> ")
+                
+                if method_choice == "1":
+                    directory = raw_input('Directory to file: ')
+                    ext = raw_input('Save as: ')
+                    image_resizer.change_format(directory, ext)
+
+                elif method_choice == "2":
+                    f_directory = raw_input('Directory to folder: ')
+                    ext = raw_input('Format: ')
+                    image_resizer.change_format_folder(f_directory, ext)
+                    
+                elif method_choice == "3":
+                    os.system('clear')
+                    sys.exit()
+
             elif choice == "3":
                 os.system('cls')
-                image_resizer.choose_make_thumbnail()
+                print '''
+        =====================
+        MAKE THUMBNAIL
+        =====================
+        1. File
+        2. Folder
+        3. Close
+        =====================
+                '''
+                method_choice = raw_input(">> ")
+                
+                if method_choice == "1":
+                    directory = raw_input('Directory to file: ')
+                    name = raw_input('Save as: ')
+                    image_resizer.make_thumbnail(directory, name)
+
+                elif method_choice == "2":
+                    f_directory = raw_input('Directory to folder: ')
+                    image_resizer.make_thumbnail_folder(f_directory)
+                    
+                elif method_choice == "3":
+                    os.system('clear')
+                    sys.exit()
+                    
             elif choice == "4":
                 raw_input('Press anything to close..')
                 sys.exit()
