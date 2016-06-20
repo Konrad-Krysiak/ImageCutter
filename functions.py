@@ -2,41 +2,24 @@
 from PIL import Image
 import os, sys
 
+class ImageResizer:
 
-def cut_image():
-    print '''
-    =====================
-    CUT IMAGE
-    =====================
-    1. File
-    2. Folder
-    3. Close
-    =====================
-    '''
-    choice = raw_input(">> ")
-    if choice == "1":
-        directory = raw_input('Directory to file: ')
-        width = input('Width: ')
-        height = input('Height: ')
-        name = raw_input('Save as: ')
-        im = Image.open(directory)
+    def cut_image(self, image_path, width, height, name):
+        im = Image.open(image_path)
         im = im.resize((width, height))
         if not os.path.exists('resized_images'):
             os.mkdir('resized_images')
         try:
-            print "Size: " + str(width) + " x " + str(height)
             im.save('resized_images/'+name)
             print "- " + name + " : " + "DONE"
             raw_input("Saved in resized_images.")
+            print "Size: " + str(width) + " x " + str(height)
         except:
             raw_input('Error..')
-
-    elif choice == "2":
-        f_directory = raw_input('Directory to folder: ')
-        width = input('Width: ')
-        height = input('Height: ')
+            
+    def cut_images_in_folder(self, images_folder_path, width, height):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
@@ -45,32 +28,16 @@ def cut_image():
             os.mkdir('resized_images')
         print "Size: " + str(width) + " x " + str(height)
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             if im.format in extensions:
                 im = im.resize((width, height))
                 im.save('resized_images/'+item)
                 print "- " + item + " : " + "DONE"
-        raw_input("Saved in resized_images.")
-    elif choice == "3":
-        os.system('clear')
-        sys.exit()
-        
-def change_format():
-    print '''
-    =====================
-    Change Format
-    =====================
-    1. File
-    2. Folder
-    3. Close
-    =====================
-    '''
-    choice = raw_input(">> ")
-    if choice == "1":
-        directory = raw_input('Directory to file: ')
-        ext = raw_input('Save as: ')
-        im = Image.open(directory)
+        raw_input("Saved in resized_images.")    
+    
+    def change_format(self, image_path, ext):
+        im = Image.open(image_path)
         if not os.path.exists('formated_images'):
             os.mkdir('formated_images')
         try:
@@ -80,21 +47,18 @@ def change_format():
             raw_input('Saved in formated_images.')
         except:
             raw_input('Error..')
-
-    elif choice == "2":
-        f_directory = raw_input('Directory to folder: ')
-        ext = raw_input('Format: ')
+            
+    def change_format_in_folder(self, images_folder_path, ext):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
         if not os.path.exists('formated_images'):
             os.mkdir('formated_images')
-        print "Format: " + ext
         fieldlist_range = len(fieldlist)
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             try:
                 im.save('formated_images/'+os.path.splitext(item)[0]+'.'+ext)
@@ -103,58 +67,35 @@ def change_format():
                 if fieldlist_range == 0:
                     raw_input('Saved in formated_images.')
             except:
-                raw_input('Error..')
-    elif choice == "3":
-        os.system('cls')
-        sys.exit()
-    else:
-        raw_input('Error')
-        sys.exit()
-        os.system('cls')
+                raw_input('Error..')        
 
-def make_thumbnail():
-    print '''
-    =====================
-    Make thumbnail
-    =====================
-    1. File
-    2. Folder
-    3. Close
-    =====================
-    '''
-    choice = raw_input(">> ")
-    if choice == "1":
-        directory = raw_input('Directory to file: ')
-        name = raw_input('Save as: ')
-        im = Image.open(directory)
+    def make_thumbnail(self, image_path, name):
+        im = Image.open(image_path)
         im.thumbnail((128, 128))
-        if not os.path.exists('min_images'):
-            os.mkdir('min_images')
+        if not os.path.exists('thumbnails'):
+            os.mkdir('thumbnails')
         try:
-            im.save('min_images/'+name)
+            im.save('thumbnails/'+name)
             print "Name: " + name
             print "Size: " + str(im.size)
-            raw_input('Saved in min_images.')
+            raw_input('Saved in thumbnails.')
         except:
             raw_input('Error..')
-    elif choice == "2":
-        f_directory = raw_input('Directory to folder: ')
+            
+    def make_thumbnail_in_folder(self, images_folder_path):
         try:
-            fieldlist = os.listdir(f_directory)
+            fieldlist = os.listdir(images_folder_path)
         except OSError:
             raw_input('Folder does not exist.')
             sys.exit()
         extensions = ['JPG', 'PNG', 'JPEG', 'GIF']
-        if not os.path.exists('min_images'):
-            os.mkdir('min_images')
+        if not os.path.exists('thumbnails'):
+            os.mkdir('thumbnails')
         for item in fieldlist:
-            directory = f_directory+ "\\" + item
+            directory = images_folder_path+ "\\" + item
             im = Image.open(directory)
             if im.format in extensions:
                 im.thumbnail((128, 128))
-                im.save('min_images/'+item)
+                im.save('thumbnails/'+item)
                 print "- " + item + " " + str(im.size) + " : " + "DONE"
-        raw_input('Saved in min_images.')
-    elif choice == "3":
-        os.system('cls')
-        sys.exit()
+        raw_input('Saved in thumbnails.')        
